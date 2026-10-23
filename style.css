@@ -14,7 +14,7 @@ h2 { font-size: 22px; margin: 36px 0 10px; }
 p, li { color: var(--muted); }
 strong { color: var(--text); font-weight: 600; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; margin: 14px 0; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .grid .card { margin: 0; }
 .grid .card b { display: block; color: var(--text); margin-bottom: 4px; }
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
@@ -25,4 +25,4 @@ td { color: var(--muted); }
 footer { margin-top: 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
 ::-webkit-scrollbar { width: 10px; height: 10px; background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .14); border-radius: 10px; border: 3px solid transparent; background-clip: padding-box; }
-@media (max-width: 560px) { h1 { font-size: 30px; } nav a { margin-left: 12px; } }
+@media (max-width: 560px) { h1 { font-size: 30px; } nav a { margin-left: 12px; } .grid { grid-template-columns: 1fr; } }
