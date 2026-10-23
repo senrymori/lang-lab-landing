@@ -22,7 +22,7 @@
     <nav>
       <a href="#lesson">Как проходит урок</a>
       <a href="/privacy">Конфиденциальность</a>
-      <a class="btn btn-sm" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+      <a class="btn btn-sm" href="#access" data-access>Запросить доступ</a>
     </nav>
   </div>
 </header>
@@ -36,7 +36,7 @@
       <h1>Репетитор, который слышит ваши&nbsp;ошибки</h1>
       <p class="lead">Английский, испанский и казахский для тех, кто говорит по-русски. Уроки голосом, под ваш уровень и интересы.</p>
       <div class="ctas">
-        <a class="btn" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+        <a class="btn" href="#access" data-access>Запросить доступ</a>
         <a class="btn btn-ghost" href="#lesson">Как проходит урок</a>
       </div>
     </div>
@@ -123,7 +123,7 @@
       <li><b>Только Mac</b><span>iPhone и Android позже</span></li>
       <li><b>Уроками</b><span>Доступ считается числом уроков</span></li>
     </ul>
-    <a class="btn" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+    <a class="btn" href="#access" data-access>Запросить доступ</a>
   </div>
 </section>
 
@@ -137,8 +137,33 @@
 <footer class="foot">
   <div class="foot-in">
     <a class="logo" href="/"><img src="/favicon.svg" alt="" width="22" height="22">Language Lab</a>
-    <span><a href="/privacy">Конфиденциальность</a><a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a></span>
+    <span><a href="/privacy">Конфиденциальность</a><a href="#access" data-access>Запросить доступ</a></span>
   </div>
 </footer>
+
+<dialog class="ask" id="access" aria-labelledby="ask-title">
+  <form class="ask-form" novalidate>
+    <button class="ask-x" type="button" value="close" aria-label="Закрыть">×</button>
+    <h2 id="ask-title">Запросить доступ</h2>
+    <p>Альфа открыта для небольшой группы. Расскажите о себе, и мы напишем на почту, когда появится место.</p>
+    <label>Как к вам обращаться<input name="name" autocomplete="name" maxlength="80" required></label>
+    <label>Почта<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+    <fieldset><legend>Какой язык</legend>
+      <label class="opt"><input type="radio" name="lang" value="en" required><span>Английский</span></label>
+      <label class="opt"><input type="radio" name="lang" value="es"><span>Испанский</span></label>
+      <label class="opt"><input type="radio" name="lang" value="kk"><span>Казахский</span></label>
+    </fieldset>
+    <label>Пара слов о себе <i>необязательно</i><textarea name="about" rows="3" maxlength="1000" placeholder="Уровень, зачем язык, что хочется уметь"></textarea></label>
+    <div class="ask-captcha"></div>
+    <p class="ask-err" role="alert" hidden></p>
+    <button class="btn" type="submit">Отправить заявку</button>
+    <small>Нажимая, вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>.</small>
+  </form>
+  <div class="ask-done" hidden>
+    <h2>Заявка у нас</h2>
+    <p>Ответим на почту, которую вы указали. Обычно в течение нескольких дней.</p>
+    <button class="btn btn-ghost" type="button" value="close">Закрыть</button>
+  </div>
+</dialog>
 </body>
 </html>

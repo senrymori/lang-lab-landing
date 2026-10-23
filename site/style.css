@@ -243,3 +243,37 @@ h1 { font-size: clamp(40px, 5.6vw, 66px); line-height: 1.04; letter-spacing: -.0
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-reveal] > * { opacity: 1; transform: none; }
 }
+
+/* access request dialog */
+.ask [hidden] { display: none !important; }
+.ask { width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid var(--line-hi); border-radius: 20px;
+  background: #16121f; color: var(--text); box-shadow: 0 40px 120px rgba(0, 0, 0, .6); overflow: auto; }
+.ask::backdrop { background: rgba(5, 3, 12, .7); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.ask[open] { animation: rise .45s var(--ease) both; }
+.ask-form, .ask-done { position: relative; padding: 32px; display: grid; gap: 16px; }
+.ask h2 { font-size: 28px; max-width: none; padding-right: 32px; }
+.ask p { font-size: 15px; }
+.ask-x { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--surface);
+  color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
+.ask-x:hover { color: var(--text); background: var(--surface-hi); }
+.ask label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--text); }
+.ask label i { font-style: normal; font-weight: 400; color: var(--faint); }
+.ask input:not([type="radio"]), .ask textarea { width: 100%; padding: 12px 14px; border-radius: var(--r-btn); border: 1px solid var(--line-hi);
+  background: rgba(255, 255, 255, .04); color: var(--text); font: 400 16px/1.4 var(--font); transition: border-color .2s, background .2s; }
+.ask textarea { resize: vertical; min-height: 84px; }
+.ask ::placeholder { color: var(--faint); }
+.ask input:focus, .ask textarea:focus { outline: none; border-color: var(--accent-soft); background: rgba(255, 255, 255, .07); }
+.ask .bad { border-color: var(--bad) !important; }
+.ask fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ask legend { font-size: 14px; font-weight: 600; margin-bottom: 6px; padding: 0; }
+.ask .opt { display: block; }
+.ask .opt input { position: absolute; opacity: 0; pointer-events: none; }
+.ask .opt span { display: block; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line-hi); font-weight: 500; color: var(--muted); cursor: pointer; transition: all .2s; }
+.ask .opt input:checked + span { background: rgba(var(--hi-rgb), .2); border-color: var(--accent-soft); color: var(--text); }
+.ask .opt input:focus-visible + span { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+.ask fieldset.bad .opt span { border-color: var(--bad); }
+.ask-captcha:empty { display: none; }
+.ask-err { color: var(--bad); font-size: 14px; }
+.ask button[type="submit"][disabled] { opacity: .6; cursor: wait; }
+.ask small { color: var(--faint); font-size: 13px; }
+.ask-done { padding-top: 40px; justify-items: start; }

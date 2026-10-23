@@ -1,8 +1,10 @@
-// langlab.uk: the static pages in site/ served by Cloudflare (Workers static assets), the domain attached on deploy.
+// langlab.uk: the static pages in site/ served by Cloudflare (Workers static assets), the domain attached on deploy;
+// src/worker.js takes the access form (secrets: RESEND_KEY, OWNER_EMAIL, TURNSTILE_SECRET via `wrangler secret put`).
 //   npx wrangler@4 deploy
 {
   "name": "langlab-landing",
   "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./site", "not_found_handling": "404-page", "html_handling": "drop-trailing-slash" },
+  "main": "src/worker.js",
+  "assets": { "binding": "ASSETS", "directory": "./site", "not_found_handling": "404-page", "html_handling": "drop-trailing-slash" },
   "routes": [{ "pattern": "langlab.uk", "custom_domain": true }]
 }
