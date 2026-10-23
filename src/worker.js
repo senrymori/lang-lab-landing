@@ -1,4 +1,5 @@
-// langlab.uk: pages come from site/ (assets); this worker only takes access requests from the form.
+// langlab.uk: pages come from site/ (assets); this worker takes access requests from the form and hands out the
+// Mac app: /download is the DMG in R2 (bucket langlab-downloads, key Language-Lab.dmg; Workers assets stop at 25 MB).
 // POST /api/request {name, email, lang, about, token} → Turnstile check → a letter to the owner through Resend,
 // Reply-To the applicant. Nothing is stored here. Secrets: RESEND_KEY, OWNER_EMAIL, TURNSTILE_SECRET.
 const LANGS = { en: 'английский', es: 'испанский', kk: 'казахский' };
@@ -43,9 +44,35 @@ async function request(req, env) {
   return json(200, { ok: true });
 }
 
+const DMG = 'Language-Lab.dmg';
+
+async function download(req, env) {
+  const obj = req.method === 'HEAD' ? await env.DOWNLOADS.head(DMG)
+    : await env.DOWNLOADS.get(DMG, { range: req.headers, onlyIf: req.headers });
+  if (!obj) return new Response('Приложение скоро будет здесь', { status: 404 });
+  const headers = new Headers();
+  obj.writeHttpMetadata(headers);
+  headers.set('etag', obj.httpEtag);
+  headers.set('content-type', 'application/x-apple-diskimage');
+  headers.set('content-disposition', 'attachment; filename="Language Lab.dmg"');
+  headers.set('cache-control', 'no-cache');  // a new build replaces it under the same name
+  headers.set('accept-ranges', 'bytes');
+  if (!('body' in obj)) return new Response(null, { status: req.method === 'HEAD' ? 200 : 304, headers });
+  if (obj.range) {
+    const { offset = 0, length = obj.size - offset } = obj.range;
+    headers.set('content-range', `bytes ${offset}-${offset + length - 1}/${obj.size}`);
+    return new Response(obj.body, { status: 206, headers });
+  }
+  return new Response(obj.body, { headers });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === '/download') {
+      if (req.method !== 'GET' && req.method !== 'HEAD') return new Response(null, { status: 405 });
+      return download(req, env);
+    }
     if (url.pathname === '/api/request') {
       if (req.method !== 'POST') return json(405, { error: 'POST only' });
       return request(req, env);
