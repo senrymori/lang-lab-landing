@@ -3,44 +3,142 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Language Lab — репетитор английского, испанского и казахского</title>
-<meta name="description" content="Language Lab — приложение с ИИ-репетитором для тех, кто говорит по-русски: английский, испанский и казахский. Закрытая бета по приглашениям.">
+<title>Language Lab: репетитор английского, испанского и казахского</title>
+<meta name="description" content="ИИ-репетитор английского, испанского и казахского для тех, кто говорит по-русски. Уроки голосом под ваш уровень. Альфа-версия, доступ по приглашениям.">
 <meta property="og:title" content="Language Lab">
-<meta property="og:description" content="ИИ-репетитор английского, испанского и казахского для тех, кто говорит по-русски. Закрытая бета.">
+<meta property="og:description" content="Репетитор, который слышит ваши ошибки. Английский, испанский и казахский для тех, кто говорит по-русски. Альфа-версия.">
 <meta property="og:url" content="https://langlab.uk/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0a0614">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+<script type="module" src="/main.js"></script>
 </head>
 <body>
-<div class="wrap">
-<header><a class="logo" href="/"><i></i>Language Lab</a><nav><a href="/privacy">Конфиденциальность</a><a href="mailto:senrymori@gmail.com">Связаться</a></nav></header>
+<header class="bar">
+  <div class="bar-in">
+    <a class="logo" href="/"><img src="/favicon.svg" alt="" width="28" height="28">Language Lab</a>
+    <nav>
+      <a href="#lesson">Как проходит урок</a>
+      <a href="/privacy">Конфиденциальность</a>
+      <a class="btn btn-sm" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+    </nav>
+  </div>
+</header>
 
-<h1>Репетитор, который ведёт уроки голосом — и помнит, где вы споткнулись</h1>
-<p>Language Lab — приложение для Mac с ИИ-репетитором для тех, кто говорит по-русски. Английский, испанский и казахский.
-Репетитор сначала определяет ваш уровень по каждому навыку, потом строит уроки под вас: разговор, слух, грамматика,
-произношение. Отвечаете голосом — он слышит ваши ошибки, а не исправленную версию.</p>
+<main>
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+  <div class="hero-in">
+    <div class="hero-copy">
+      <span class="pill">Альфа-версия: доступ у единиц</span>
+      <h1>Репетитор, который слышит ваши&nbsp;ошибки</h1>
+      <p class="lead">Английский, испанский и казахский для тех, кто говорит по-русски. Уроки голосом, под ваш уровень и интересы.</p>
+      <div class="ctas">
+        <a class="btn" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+        <a class="btn btn-ghost" href="#lesson">Как проходит урок</a>
+      </div>
+    </div>
 
-<div class="grid">
-  <div class="card"><b>Уровень по навыкам</b>Не одна буква, а отдельно словарь, грамматика, слух, речь, произношение.</div>
-  <div class="card"><b>Голос</b>Говорите в микрофон; репетитор разбирает и слова, и произношение.</div>
-  <div class="card"><b>Под вас</b>Задания из ваших интересов: работа, сериалы, песни, поездки.</div>
-  <div class="card"><b>Между уроками</b>Короткие тренировки на то, что ещё не закрепилось.</div>
-</div>
+    <figure class="demo" aria-label="Фрагмент урока: ученик отвечает голосом, репетитор поправляет ошибку">
+      <div class="demo-top"><span>Урок</span><b>English</b></div>
+      <div class="msg tutor" data-s="1">Расскажите голосом, как прошли выходные.</div>
+      <div class="msg me" data-s="2">
+        <div class="voice"><span class="mic"></span><span class="wave"></span><span class="dur">0:06</span></div>
+        <p class="said">Last weekend I <span class="err">have went</span> to the mountains with my friends</p>
+      </div>
+      <div class="msg tutor" data-s="3">Здорово рассказали. Одна поправка: <s>have went</s> → <b>went</b>. Законченное прошлое, Past Simple. Повторите фразу?</div>
+      <div class="note" data-s="4">В заметки: путает Past Simple и Present Perfect</div>
+    </figure>
+  </div>
+</section>
 
-<h2>Сейчас — закрытая бета</h2>
-<p>Мы проверяем приложение с небольшой группой учеников. Вход — по личному коду приглашения; доступ считается уроками.
-Если хотите попробовать — напишите на <a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a>.</p>
+<section class="langs" data-reveal>
+  <h2>Три языка и один репетитор, который вас помнит</h2>
+  <div class="posters">
+    <article class="poster big" data-lang="en">
+      <div class="poster-art"></div><div class="poster-word">EN</div>
+      <div class="poster-cloud"><span style="left:6%;top:24%">I reckon</span><span style="left:44%;top:14%">would have</span><span style="left:20%;top:52%">nevertheless</span><span style="left:62%;top:44%">by the way</span></div>
+      <div class="poster-body"><h3>English</h3><p>Разговор, работа, сериалы и песни</p></div>
+    </article>
+    <article class="poster" data-lang="es">
+      <div class="poster-art"></div><div class="poster-word">ES</div>
+      <div class="poster-cloud"><span style="left:8%;top:22%">ojalá</span><span style="left:46%;top:40%">¿qué tal?</span></div>
+      <div class="poster-body"><h3>Español</h3><p>От первых фраз до свободной речи</p></div>
+    </article>
+    <article class="poster" data-lang="kk">
+      <div class="poster-art"></div><div class="poster-word">KZ</div>
+      <div class="poster-cloud"><span style="left:8%;top:22%">қалайсың?</span><span style="left:50%;top:40%">рахмет</span></div>
+      <div class="poster-body"><h3>Қазақша</h3><p>Каждую фразу проверяет морфология и речь носителей</p></div>
+    </article>
+  </div>
+</section>
 
-<h2>Честно о том, как это устроено</h2>
-<p>Уроки ведёт языковая модель OpenAI, речь распознаёт Google (Gemini), казахский голос — Microsoft Azure.
-Что именно куда уходит и что мы храним, расписано по пунктам в <a href="/privacy">политике конфиденциальности</a>.
-Рекламы нет, данные не продаём, трекеров нет.</p>
+<section class="lesson" id="lesson">
+  <div class="lesson-head">
+    <h2>Как проходит урок</h2>
+    <p>Как у живого репетитора: сначала узнаёт вас, потом ведёт.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>Сначала уровень</h3><p>Репетитор проверяет отдельно словарь, грамматику, слух, речь и произношение. Один раз на язык.</p></li>
+    <li><h3>Вы рассказываете, с чем пришли</h3><p>Урок начинается с голосового: что было за неделю, к чему готовитесь. В ответ репетитор показывает план урока.</p></li>
+    <li><h3>Урок голосом</h3><p>Задания из ваших интересов. Репетитор слышит, как вы сказали на самом деле, а не исправленную версию.</p></li>
+    <li><h3>Тренировки между уроками</h3><p>В конце урока он назначает короткую игру на то, что ещё не закрепилось.</p></li>
+  </ol>
+</section>
 
-<footer>Language Lab · <a href="/privacy">Политика конфиденциальности</a> · <a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a></footer>
-</div>
+<section class="bento" data-reveal>
+  <h2>Что внутри</h2>
+  <div class="cells">
+    <div class="cell skills">
+      <h3>Уровень по навыкам, а не одна буква</h3>
+      <p>Видно, что подтянуть: слова, грамматику, слух или речь.</p>
+      <ul class="levels" aria-label="Пример профиля ученика">
+        <li><span>Словарь</span><b>B2</b></li>
+        <li><span>Грамматика</span><b>B1</b></li>
+        <li><span>Слух</span><b>B1</b></li>
+        <li><span>Речь</span><b>A2</b></li>
+        <li><span>Произношение</span><b>B1</b></li>
+      </ul>
+      <small>пример профиля</small>
+    </div>
+    <div class="cell"><h3>Помнит вас</h3><p>Ведёт ваш маршрут и заметки. Следующий урок продолжает прошлый, упрямые ошибки возвращаются, пока не уйдут.</p></div>
+    <div class="cell pron">
+      <h3>Произношение</h3><p>Сравнивает звуки, которые вы произнесли, с эталоном и показывает, где разошлись.</p>
+      <div class="word"><span class="miss">th</span>ought</div>
+      <small><b>th</b> прозвучало как «с»</small>
+    </div>
+    <div class="cell songs"><h3>Песни и сцены</h3><p>Строчки из песен, которые вы любите, и сцены, которые нужно сыграть.</p></div>
+    <div class="cell"><h3>Под ваши интересы</h3><p>Расскажите о себе на странице «Обо мне», и задания будут про вашу работу, сериалы и поездки.</p></div>
+  </div>
+</section>
+
+<section class="alpha" data-reveal>
+  <div class="alpha-in">
+    <h2>Это альфа-версия</h2>
+    <p>Language Lab открыт для небольшой группы учеников. Что-то может работать неровно: мы быстро правим и читаем каждое письмо.</p>
+    <ul class="facts">
+      <li><b>По приглашению</b><span>Вход по личному коду, один код на одного ученика</span></li>
+      <li><b>Только Mac</b><span>iPhone и Android позже</span></li>
+      <li><b>Уроками</b><span>Доступ считается числом уроков</span></li>
+    </ul>
+    <a class="btn" href="mailto:senrymori@gmail.com?subject=Language%20Lab%3A%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить доступ</a>
+  </div>
+</section>
+
+<section class="data" data-reveal>
+  <h2>Ваши данные</h2>
+  <p>Уроки ведёт модель OpenAI, речь распознаёт Google Gemini, казахский голос озвучивает Microsoft Azure. Записи голоса удаляются через 7 дней. Рекламы и трекеров нет, данные не продаём.</p>
+  <a class="more" href="/privacy">Политика конфиденциальности</a>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <a class="logo" href="/"><img src="/favicon.svg" alt="" width="22" height="22">Language Lab</a>
+    <span><a href="/privacy">Конфиденциальность</a><a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a></span>
+  </div>
+</footer>
 </body>
 </html>
