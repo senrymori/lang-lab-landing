@@ -3,27 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Политика конфиденциальности — Language Lab</title>
+<title>Политика конфиденциальности — LangLab</title>
 <meta name="description" content="Что Language Lab хранит о вас, кому передаёт и как всё удалить.">
-<meta name="theme-color" content="#0a0614">
+<meta name="theme-color" content="#f4e8dc">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/golos-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header class="bar">
-  <div class="bar-in">
-    <a class="logo" href="/"><img src="/favicon.svg" alt="" width="28" height="28">Language Lab</a>
-    <nav><a href="/">Главная</a><a href="mailto:senrymori@gmail.com">Связаться</a></nav>
-  </div>
+<header class="page-bar">
+  <nav class="ll-nav">
+    <a class="ll-mark" href="/"><img class="ll-mark-logo" src="/img/logo.svg" alt="" width="28" height="32">LANG<b>·</b>LAB</a>
+    <div class="ll-nav-links"><a href="/">Главная</a><a href="mailto:hello@langlab.uk">Связаться</a></div>
+  </nav>
 </header>
 <main class="doc">
 
 <h1>Политика конфиденциальности</h1>
 <p>Обновлено 23 октября 2026. Здесь без мелкого шрифта: что Language Lab узнаёт о вас, зачем, где это лежит, кому
-передаётся и как всё удалить. Вопросы и запросы — <a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a>.</p>
+передаётся и как всё удалить. Вопросы и запросы — <a href="mailto:hello@langlab.uk">hello@langlab.uk</a>.</p>
 
 <h2>Что мы храним</h2>
-<div class="card table"><table>
+<div class="table"><table>
 <tr><th>Что</th><th>Зачем</th><th>Сколько</th></tr>
 <tr><td><strong>Почта и имя</strong></td><td>Вход в аккаунт, обращение к вам на уроках, письма со ссылкой для входа.</td><td>Пока есть аккаунт.</td></tr>
 <tr><td><strong>«Обо мне»</strong> — то, что вы сами рассказали (интересы, цели, работа)</td><td>Из этого репетитор придумывает задания под вас. Он дописывает сюда то, что узнаёт на уроках; вы видите и правите всё на странице «Обо мне».</td><td>Пока есть аккаунт.</td></tr>
@@ -31,26 +32,26 @@
 <tr><td><strong>Записи голоса</strong></td><td>Распознать ответ, разобрать произношение, дать переслушать ответ в уроке.</td><td><strong>Удаляются через 7 дней</strong>, в резервные копии не попадают.</td></tr>
 <tr><td><strong>Устройства и вход</strong> — сеанс входа (только его хэш), название браузера/приложения, IP при запросе письма</td><td>Держать вас в аккаунте, защищать вход от перебора.</td><td>Сеанс — до 180 дней без входа; запросы на вход — 1 день.</td></tr>
 <tr><td><strong>Расход на модели</strong> по дням</td><td>Учёт затрат и защита от злоупотреблений.</td><td>Пока есть аккаунт.</td></tr>
-<tr><td><strong>Заявка на доступ</strong> с сайта: имя, почта, язык, что вы о себе написали</td><td>Ответить вам и выдать приглашение. Заявка не сохраняется на сайте: она приходит письмом в нашу почту.</td><td>Пока идёт переписка; удалим по вашей просьбе.</td></tr>
+<tr><td><strong>Заявка на доступ</strong> с сайта: имя и почта</td><td>Выдать приглашение. Заявка хранится на нашем сервере, её видит только администратор.</td><td>Пока заявку не рассмотрят: после приглашения или отказа она удаляется.</td></tr>
 </table></div>
 <p>Платёжных данных, документов, контактов, геолокации мы не собираем. Аналитики, рекламы и трекеров нет. В браузере —
 только cookie сеанса входа; в приложении для Mac сеанс хранится в Связке ключей macOS.</p>
 
 <h2>Кому передаётся и где лежит</h2>
-<div class="card table"><table>
+<div class="table"><table>
 <tr><th>Сервис</th><th>Что получает</th><th>Зачем</th></tr>
 <tr><td><strong>OpenAI</strong> (США)</td><td>Текст урока: ваши ответы (уже распознанные в текст), «Обо мне», ход обучения — то, что нужно репетитору для урока.</td><td>Ведёт урок. По условиям API OpenAI не обучает модели на этих данных.</td></tr>
 <tr><td><strong>Google</strong> (Gemini, США)</td><td>Запись голоса ответа.</td><td>Распознаёт речь. Используется платный тариф API: Google не обучает модели на присланном.</td></tr>
 <tr><td><strong>Google</strong> (вход)</td><td>Если вы входите через Google — мы получаем от Google только почту и имя.</td><td>Вход без пароля. Данные от Google используются только для входа, в соответствии с <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, включая требования Limited Use.</td></tr>
 <tr><td><strong>Microsoft Azure</strong> (Швеция)</td><td>Текст фраз на казахском.</td><td>Озвучивает казахский голос репетитора.</td></tr>
-<tr><td><strong>Resend</strong> (ЕС)</td><td>Почта и текст письма для входа; заявка на доступ с сайта.</td><td>Отправляет письма со ссылкой и кодом и доставляет нам заявки.</td></tr>
+<tr><td><strong>Resend</strong> (ЕС)</td><td>Почта и текст письма для входа и приглашения.</td><td>Отправляет письма со ссылкой и кодом.</td></tr>
 <tr><td><strong>OVHcloud</strong> (сервер в Канаде)</td><td>Всё из раздела «Что мы храним».</td><td>Здесь работает Language Lab и лежит база.</td></tr>
 <tr><td><strong>Cloudflare</strong></td><td>Трафик между приложением и сервером; зашифрованные резервные копии базы и данных обучения; технические данные браузера при отправке заявки (Turnstile).</td><td>Защита и доставка трафика, проверка, что заявку отправил человек; копии — 60 дней.</td></tr>
 </table></div>
 <p>Мы не продаём и не передаём ваши данные никому, кроме сервисов выше, и только для того, что в них написано.</p>
 
 <h2>Ваши права</h2>
-<p>Напишите на <a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a> с почты аккаунта, и мы:</p>
+<p>Напишите на <a href="mailto:hello@langlab.uk">hello@langlab.uk</a> с почты аккаунта, и мы:</p>
 <ul>
 <li>пришлём всё, что храним о вас;</li>
 <li>исправим неточное (большую часть — «Обо мне» — можно поправить самим в приложении);</li>
@@ -64,11 +65,9 @@
 <p>Если что-то здесь поменяется, обновим дату вверху и сообщим ученикам по почте до того, как изменения вступят в силу.</p>
 
 </main>
-<footer class="foot">
-  <div class="foot-in">
-    <a class="logo" href="/"><img src="/favicon.svg" alt="" width="22" height="22">Language Lab</a>
-    <span><a href="/">Главная</a><a href="mailto:senrymori@gmail.com">senrymori@gmail.com</a></span>
-  </div>
+<footer class="page-foot ll-grain" data-theme="dark">
+  <a class="ll-mark" href="/"><img class="ll-mark-logo" src="/img/logo-dark.svg" alt="" width="23" height="26">LANG<b>·</b>LAB</a>
+  <span class="end-credit">© LangLab 2026 · <a href="/">Главная</a> · <a href="mailto:hello@langlab.uk">hello@langlab.uk</a></span>
 </footer>
 </body>
 </html>
