@@ -6,7 +6,9 @@
   "name": "langlab-landing",
   "compatibility_date": "2026-10-01",
   "main": "src/worker.js",
-  "assets": { "binding": "ASSETS", "directory": "./site", "not_found_handling": "404-page", "html_handling": "drop-trailing-slash" },
+  "assets": { "binding": "ASSETS", "directory": "./site", "not_found_handling": "404-page", "html_handling": "drop-trailing-slash",
+              // the worker's own paths: else a browser's navigation to them gets the 404 page before the worker runs
+              "run_worker_first": ["/download", "/api/*"] },
   "vars": { "API_URL": "https://api.langlab.uk" },
   "r2_buckets": [{ "binding": "DOWNLOADS", "bucket_name": "langlab-downloads" }],
   "routes": [{ "pattern": "langlab.uk", "custom_domain": true }]
