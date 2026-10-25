@@ -52,7 +52,7 @@ async function download(req, env) {
   headers.set('cache-control', 'no-cache');  // a new build replaces it under the same name
   headers.set('accept-ranges', 'bytes');
   if (!('body' in obj)) return new Response(null, { status: req.method === 'HEAD' ? 200 : 304, headers });
-  if (obj.range) {
+  if (obj.range && req.headers.has('range')) {  // R2 reports a range even for a whole-file read: that one is a 200
     const { offset = 0, length = obj.size - offset } = obj.range;
     headers.set('content-range', `bytes ${offset}-${offset + length - 1}/${obj.size}`);
     return new Response(obj.body, { status: 206, headers });
