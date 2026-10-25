@@ -60,9 +60,30 @@ async function download(req, env) {
   return new Response(obj.body, { headers });
 }
 
+// the app's updates (electron-updater, desktop/main.js): latest-mac.yml says the newest version, its zip is beside it —
+// both in R2 under updates/, put there by lang-lab-platform/scripts/publish-app.sh
+const UPDATE_FILE = /^\/updates\/([\w.-]+\.(?:yml|zip|blockmap))$/;
+async function update(req, env, name) {
+  const obj = req.method === 'HEAD' ? await env.DOWNLOADS.head(`updates/${name}`)
+    : await env.DOWNLOADS.get(`updates/${name}`, { range: req.headers });
+  if (!obj) return new Response('Not found', { status: 404 });
+  const headers = new Headers({ etag: obj.httpEtag, 'accept-ranges': 'bytes',
+    'content-type': name.endsWith('.yml') ? 'text/yaml; charset=utf-8' : 'application/octet-stream',
+    'cache-control': name.endsWith('.yml') ? 'no-cache' : 'public, max-age=31536000, immutable' });
+  if (!('body' in obj)) return new Response(null, { headers });
+  if (obj.range && req.headers.has('range')) {
+    const { offset = 0, length = obj.size - offset } = obj.range;
+    headers.set('content-range', `bytes ${offset}-${offset + length - 1}/${obj.size}`);
+    return new Response(obj.body, { status: 206, headers });
+  }
+  return new Response(obj.body, { headers });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    const upd = UPDATE_FILE.exec(url.pathname);
+    if (upd) return req.method === 'GET' || req.method === 'HEAD' ? update(req, env, upd[1]) : new Response(null, { status: 405 });
     if (url.pathname === '/download') {
       if (req.method !== 'GET' && req.method !== 'HEAD') return new Response(null, { status: 405 });
       return download(req, env);
