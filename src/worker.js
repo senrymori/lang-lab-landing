@@ -48,7 +48,7 @@ async function download(req, env) {
   obj.writeHttpMetadata(headers);
   headers.set('etag', obj.httpEtag);
   headers.set('content-type', 'application/x-apple-diskimage');
-  headers.set('content-disposition', 'attachment; filename="Language Lab.dmg"');
+  headers.set('content-disposition', 'attachment; filename="LangLab.dmg"');
   headers.set('cache-control', 'no-cache');  // a new build replaces it under the same name
   headers.set('accept-ranges', 'bytes');
   if (!('body' in obj)) return new Response(null, { status: req.method === 'HEAD' ? 200 : 304, headers });
